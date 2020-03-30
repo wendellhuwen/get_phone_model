@@ -9,6 +9,8 @@
 <script src="../src/ua-parser.js"></script>
 <script>
 function getUA() {
+    document.getElementById("yourua").innerHTML = window.navigator.userAgent;
+    
     var parser = new UAParser();
     
     // by default it takes ua string from current browser's window.navigator.userAgent
@@ -26,7 +28,9 @@ function getUA() {
 </script>
 </head>
 <body onload="getUA()">
-<h1>Phone model form User-Agent:</h1>
+<h1>User-Agent:</h1>
+<div id="yourua">
+<h1>Results:</h1>
 <div id="results">
 </body>
 </html>
