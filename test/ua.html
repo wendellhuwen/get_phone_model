@@ -32,9 +32,10 @@ function parseUA() {
 }
 </script>
 </head>
+
 <body onload="fetchUA(); parseUA();">
 <h1>User-Agent:</h1>
-<div><textarea id="yourua" cols="80" rows="5"></textarea></div>
+<div><textarea id="yourua" rows="10" style="width: 100%; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;"></textarea></div>
 <div>
 <input type="button" value="Reset" onclick="fetchUA(); parseUA();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Parse" onclick="parseUA()"/>
 </div>
