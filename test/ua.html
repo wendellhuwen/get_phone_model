@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<script src="/dist/ua-parser.min.js"></script>
+<script>
+function getUA() {
+    var parser = new UAParser();
+    
+    // by default it takes ua string from current browser's window.navigator.userAgent
+    var result = parser.getResult();
+    console.log(result);
+    
+    var resultsHtml = "";
+    resultsHtml += "<div>[device]: vendor=" + result.device.vendor + ", model=<span style='color:#FF0000'>" + result.device.model + "</span>, type=" + result.device.type + "</div>\n";
+    resultsHtml += "<div>[os]: name=" + result.os.name + ", version=" + result.os.version + "</div>\n";
+    resultsHtml += "<div>[browser]: name=" + result.browser.name + ", version=" + result.browser.version + "</div>\n";
+    
+    var resultsObj = document.getElementById("results");
+    resultsObj.innerHTML = resultsHtml;
+}
+</script>
+</head>
+<body onload="getUA()">
+<h1>Get User-Agent:</h1>
+<div id="results">
+</body>
+</html>
