@@ -8,12 +8,17 @@
 
 <script src="../src/ua-parser.js"></script>
 <script>
-function getUA() {
-    document.getElementById("yourua").innerHTML = window.navigator.userAgent;
+function doOnLoad() {
+    fetchUA();
+	parseUA();
+}
+function fetchUA() {
+    document.getElementById("yourua").value = window.navigator.userAgent;
+}
+function parseUA() {
+    var uastring = document.getElementById("yourua").value;
     
-    var parser = new UAParser();
-    
-    // by default it takes ua string from current browser's window.navigator.userAgent
+    var parser = new UAParser(uastring);
     var result = parser.getResult();
     console.log(result);
     
@@ -27,11 +32,14 @@ function getUA() {
 }
 </script>
 </head>
-<body onload="getUA()">
+<body onload="fetchUA(); parseUA();">
 <h1>User-Agent:</h1>
-<div id="yourua"></div>
+<div><textarea id="yourua" cols="80" rows="5"></textarea></div>
+<div>
+<input type="button" value="Reset" onclick="fetchUA(); parseUA();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Parse" onclick="parseUA()"/>
+</div>
 
 <h1>Results:</h1>
- <div id="results"></div>
+<div id="results"></div>
 </body>
 </html>
