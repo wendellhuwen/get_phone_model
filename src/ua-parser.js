@@ -218,7 +218,11 @@
 
     var regexes = {
 
-        browser : [[
+        browser : [
+            [/(HuaweiBrowser)\/([\w\.]+)/i                                      // HuaweiBrowser
+            ], [[NAME, 'HuaweiBrowser'], VERSION],
+            
+            [
 
             // Presto based
             /(opera\smini)\/([\w\.-]+)/i,                                       // Opera Mini
@@ -418,7 +422,13 @@
             ], [[ARCHITECTURE, util.lowerize]]
         ],
 
-        device : [[
+        device : [
+            [/\([\w\s]+; [\w\s]+; ([\w\-]+)\).* HuaweiBrowser.* Mobile /i       // Huawei Mobile
+            ], [MODEL, [VENDOR, 'Huawei'], [TYPE, MOBILE]], 
+			[/\([\w\s]+; [\w\s]+; ([\w\-]+)\).* HuaweiBrowser/i                 // Huawei
+            ], [MODEL, [VENDOR, 'Huawei'], TYPE], 
+            
+            [
 
             /\((ipad|playbook);[\w\s\),;-]+(rim|apple)/i                        // iPad/PlayBook
             ], [MODEL, VENDOR, [TYPE, TABLET]], [
